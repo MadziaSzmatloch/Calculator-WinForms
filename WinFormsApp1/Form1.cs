@@ -1,109 +1,111 @@
 using System;
+using System.Data;
+using System.Reflection.Metadata;
 
 namespace WinFormsApp1
 {
 
-    public enum Operation
-    {
-        None,
-        Multiplication,
-        Addition,
-        Subtraction,
-        Division,
-    }
-
     public partial class Form1 : Form
     {
-        private string FirstValue;
-        private string SecondValue;
+        private string LastValue = string.Empty;
+        private bool OperationClicked = false;
         IFormatProvider CultureUS = new System.Globalization.CultureInfo("en-US");
 
-        private Operation CurrentOperation = Operation.None;
+        private const string divisionErrorMessage = "Nie mo¿na dzieliæ przez 0";
 
         public Form1()
         {
             InitializeComponent();
         }
 
-
+        private void DisableButtons(object sender, EventArgs e)
+        {
+            buttonChange.Enabled = false;
+            buttonDivide.Enabled = false;
+            buttonMultiply.Enabled = false;
+            buttonMinus.Enabled = false;
+            buttonPlus.Enabled = false;
+            buttonDot.Enabled = false;
+            buttonResult.Enabled = false;
+            buttonClear.Enabled = false;
+        }
 
 
         private void Numbers_Clicked(object sender, EventArgs e)
         {
             string num = (sender as Button).Text;
-            if (CurrentOperation != Operation.None)
+            if (textBox1.Text.Equals(divisionErrorMessage))
             {
-                SecondValue += num;
-
+                textBox1.Text = num;
+                return;
             }
+            LastValue += num;
             textBox1.Text += num;
         }
 
         private void Operation_Clicked(object sender, EventArgs e)
         {
-            FirstValue = textBox1.Text;
+            OperationClicked = true;
+            LastValue = string.Empty;
             var operation = (sender as Button).Text;
-            CurrentOperation = operation switch
-            {
-                "+" => Operation.Addition,
-                "-" => Operation.Subtraction,
-                "÷" => Operation.Division,
-                "x" => Operation.Multiplication,
-                _ => Operation.None
-            };
             textBox1.Text += operation;
-
         }
 
-        private double Calculate(string value1, string value2)
-        {
-            double num1, num2 = 0;
-            num1 = double.Parse(value1, CultureUS);
-            num2 = double.Parse(value2, CultureUS);
-            switch (CurrentOperation)
-            {
-                case Operation.None: return num1;
-                case Operation.Addition: return num1 + num2;
-                case Operation.Subtraction: return num1 - num2;
-                case Operation.Multiplication: return num1 * num2;
-                case Operation.Division:
-
-                    if (num2 == 0)
-                    {
-                        MessageBox.Show("Nie mo¿na dzieliæ przez 0");
-                        return 0;
-                    }
-                    return num1 / num2;
-
-            }
-
-
-            return 0;
-        }
 
         private void OnButtonResultClicked(object sender, EventArgs e)
         {
-            textBox1.Text = Calculate(FirstValue, SecondValue).ToString().Replace(",", ".");
+            string formula = textBox1.Text.Replace('÷', '/').Replace('x', '*');
+            try
+            {
+                DataTable dataTable = new();
+                var result = dataTable.Compute(formula, "").ToString();
+                double resultAsDouble = Convert.ToDouble(result);
+                if (result.Equals("NaN") || double.IsInfinity(resultAsDouble))
+                {
+                    textBox1.Text = divisionErrorMessage;
+                    DisableButtons(sender, e);
+                    return;
+                }
 
-            FirstValue = textBox1.Text;
-            SecondValue = string.Empty;
+                textBox1.Text = result;
+
+            }
+            catch (DivideByZeroException)
+            {
+                textBox1.Text = divisionErrorMessage;
+                DisableButtons(sender, e);   
+            }
+            LastValue = textBox1.Text;
         }
 
         private void OnClearClicked(object sender, EventArgs e)
         {
-            textBox1.Text = string.Empty;
-            FirstValue = string.Empty;
-            SecondValue = string.Empty;
-            CurrentOperation = Operation.None;
+            textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            LastValue = LastValue.Remove(LastValue.Length - 1);
         }
 
         private void OnSeparatorClicked(object sender, EventArgs e)
         {
-            textBox1.Text += ".";
-            if (CurrentOperation != Operation.None)
+            if (!LastValue.Contains("."))
             {
-                SecondValue += ".";
+                textBox1.Text += ".";
+                LastValue += ".";
             }
         }
+
+        private void OnClearEverythingClicked(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+        }
+
+        private void OnPlusMinusClicked(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - LastValue.Length);
+            double val = Double.Parse(LastValue) * -1;
+            LastValue = val.ToString();
+            textBox1.Text += LastValue;
+        }
+
+
     }
 }
