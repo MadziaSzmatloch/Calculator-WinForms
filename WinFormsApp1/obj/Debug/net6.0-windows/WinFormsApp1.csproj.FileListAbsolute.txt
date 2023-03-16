@@ -32,3 +32,4 @@ D:\WinForms\1\WinFormsApp1\Calculator\WinFormsApp1\obj\Debug\net6.0-windows\refi
 D:\WinForms\1\WinFormsApp1\Calculator\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.pdb
 D:\WinForms\1\WinFormsApp1\Calculator\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.genruntimeconfig.cache
 D:\WinForms\1\WinFormsApp1\Calculator\WinFormsApp1\obj\Debug\net6.0-windows\ref\WinFormsApp1.dll
+D:\WinForms\1\WinFormsApp1\Calculator\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.Properties.Resources.resources
