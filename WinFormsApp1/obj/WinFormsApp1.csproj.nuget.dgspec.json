@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WinForms\\1\\WinFormsApp1\\Calculator\\WinFormsApp1\\WinFormsApp1.csproj": {}
+    "D:\\c#\\Calculator-WinForms\\WinFormsApp1\\WinFormsApp1.csproj": {}
   },
   "projects": {
-    "D:\\WinForms\\1\\WinFormsApp1\\Calculator\\WinFormsApp1\\WinFormsApp1.csproj": {
+    "D:\\c#\\Calculator-WinForms\\WinFormsApp1\\WinFormsApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WinForms\\1\\WinFormsApp1\\Calculator\\WinFormsApp1\\WinFormsApp1.csproj",
+        "projectUniqueName": "D:\\c#\\Calculator-WinForms\\WinFormsApp1\\WinFormsApp1.csproj",
         "projectName": "WinFormsApp1",
-        "projectPath": "D:\\WinForms\\1\\WinFormsApp1\\Calculator\\WinFormsApp1\\WinFormsApp1.csproj",
+        "projectPath": "D:\\c#\\Calculator-WinForms\\WinFormsApp1\\WinFormsApp1.csproj",
         "packagesPath": "C:\\Users\\Madzia\\.nuget\\packages\\",
-        "outputPath": "D:\\WinForms\\1\\WinFormsApp1\\Calculator\\WinFormsApp1\\obj\\",
+        "outputPath": "D:\\c#\\Calculator-WinForms\\WinFormsApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Madzia\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -208,7 +208,7 @@ namespace WinFormsApp1
 
 
 
-        #region TEST
+        /*#region TEST
         private System.Windows.Forms.Timer timer1;
 
         private void InitTimer(object sender, EventArgs e)
@@ -222,6 +222,6 @@ namespace WinFormsApp1
         {
             Console.WriteLine($"{LastValue.ToString()}: [{string.Join(", ", Values)}]");
         }
-        #endregion
+        #endregion*/
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fDDuMuYr6nJQk5iV4CotrEW8uhKH+wRduKhF9Gr83wnIJMWu7W/D/enDksYgmz9KJJ0JU7vQwebmG/YVT+MIHQ==",
+  "dgSpecHash": "oGk6ToLLLtGI3VBVtiaCPqu0BkPvhbRB4jp37UMX0ANRHPxhW1PaZUemdpLPnhRHeCrDnDctdLqLAxXpAENFYQ==",
   "success": true,
-  "projectFilePath": "D:\\WinForms\\1\\WinFormsApp1\\Calculator\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "D:\\c#\\Calculator-WinForms\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

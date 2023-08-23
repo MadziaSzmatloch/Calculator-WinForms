@@ -319,7 +319,7 @@
             MaximizeBox = false;
             Name = "Form1";
             Text = "Form1";
-            Load += InitTimer;
+            //Load += InitTimer;
             ResumeLayout(false);
             PerformLayout();
         }
